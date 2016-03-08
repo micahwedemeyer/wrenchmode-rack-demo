@@ -13,10 +13,8 @@ class Redirector
 
   def call(env)      
     if @switched
-      puts "Switched out...redirecting"
       redirect
     else
-      puts "No switch"
       @app.call(env)   
     end
   end      

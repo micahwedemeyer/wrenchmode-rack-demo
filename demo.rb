@@ -1,8 +1,16 @@
 require 'sinatra'
+require 'slim'
+require 'sass'
+
 require './redirector'
 
 use Redirector
 
 get "/" do
-  '200 Hello World'
+  slim :index
 end
+
+get "/app.css" do
+  scss "sass/app".to_sym
+end
+
