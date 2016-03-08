@@ -4,7 +4,7 @@ require 'sass'
 
 require './redirector'
 
-use Redirector
+use Redirector, domain_id: 4, logging: true
 
 get "/" do
   slim :index
