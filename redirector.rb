@@ -9,6 +9,7 @@ class Redirector
     opts = opts.each_with_object({}) { |(k,v), h| h[k.to_sym] = v }
     opts = {
       domain_id: nil,
+      jwt: "unauthorized",
       switched: false,
       status_protocol: "http",
       status_host: "localhost:4000",
@@ -18,6 +19,7 @@ class Redirector
     }.merge(opts)
 
     @domain_id = opts[:domain_id]
+    @jwt = opts[:jwt]
     @switched = opts[:switched]
     @status_url = "#{opts[:status_protocol]}://#{opts[:status_host]}#{opts[:status_path]}#{@domain_id}"
     @check_delay_secs = opts[:check_delay_secs]
@@ -65,7 +67,8 @@ class Redirector
 
   def open_uri_headers
     {
-      "Accept" => "application/json"
+      "Accept" => "application/json",
+      "Authorization" => @jwt
     }
   end
 
