@@ -1,3 +1,6 @@
 .ruby-version
 .ruby-gemset
 .sass-cache
+
+# Handle dev config on your own...
+config-development.rb
