@@ -5,12 +5,19 @@ Bundler.require(:default)
 environment = settings.environment || 'development'
 require "./config-#{environment}"
 
-use Wrenchmode::Rack,
+wm_config = {
   check_delay_secs: 2,
-  logging: true,
-  jwt: WRENCHMODE_JWT,
-  status_protocol: WRENCHMODE_STATUS_PROTOCOL,
-  status_host: WRENCHMODE_STATUS_HOST
+  logging: true
+}
+
+# In production, we assume it's being handled via the Heroku Addon
+if environment == 'development'
+  wm_config[:jwt] = WRENCHMODE_JWT
+  wm_config[:status_protocol] = WRENCHMODE_STATUS_PROTOCOL
+  wm_config[:status_host] = WRENCHMODE_STATUS_HOST
+end
+
+use Wrenchmode::Rack, wm_config
 
 get "/" do
   slim :index
