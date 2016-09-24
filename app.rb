@@ -11,7 +11,7 @@ wm_config = {
 }
 
 # In production, we assume it's being handled via the Heroku Addon
-if environment == 'development' || true
+if environment == 'development' || !ENV['HEROKU_INSTALL']
   wm_config[:jwt] = WRENCHMODE_JWT
   wm_config[:status_protocol] = WRENCHMODE_STATUS_PROTOCOL
   wm_config[:status_host] = WRENCHMODE_STATUS_HOST
