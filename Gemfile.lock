@@ -16,7 +16,7 @@ GEM
       tilt (>= 1.3.3, < 2.1)
     temple (0.7.6)
     tilt (2.0.5)
-    wrenchmode-rack (0.0.14)
+    wrenchmode-rack (0.1.0)
       rack (>= 1.0)
 
 PLATFORMS
@@ -26,7 +26,7 @@ DEPENDENCIES
   sass
   sinatra (~> 2.0.0.beta2)
   slim
-  wrenchmode-rack (~> 0.0.14)
+  wrenchmode-rack (~> 0.1.0)
 
 BUNDLED WITH
    1.10.6
